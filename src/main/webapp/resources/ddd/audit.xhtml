@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="entity" type="com.ideaspymes.dddexample.infrastructure.model.BaseEntityAudit"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <p:panelGrid columns="2">
+            <h:outputText value="Creado el: " style="font-weight: bold"/>
+            <h:outputText value="#{cc.attrs.entity['createdAt']}">
+                <f:convertDateTime locale="#{formato.locale}" pattern="#{formato.patronFechaHora}"
+                                   timeZone="America/Asuncion"/>
+            </h:outputText>
+            <h:outputText value="Creado Por: " style="font-weight: bold"/>
+            <h:outputText value="#{cc.attrs.entity['createdBy']}"/>
+            <h:outputText value="Ultima Modificación: " style="font-weight: bold"/>
+            <h:outputText value="#{cc.attrs.entity['updatedAt']}">
+                <f:convertDateTime locale="#{formato.locale}" pattern="#{formato.patronFechaHora}"
+                                   timeZone="America/Asuncion"/>
+            </h:outputText>
+            <h:outputText value="Modificado Por: " style="font-weight: bold"/>
+            <h:outputText value="#{cc.attrs.entity['updatedBy']}"/>
+        </p:panelGrid>
+    </cc:implementation>
+</html>
